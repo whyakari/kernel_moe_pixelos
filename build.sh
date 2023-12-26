@@ -4,7 +4,7 @@
 # Copyright (C) 2020-2023 Adithya R.
 
 SECONDS=0 # builtin bash timer
-ZIPNAME="QuicksilveRV2-ginkgo-$(date '+%Y%m%d-%H%M').zip"
+ZIPNAME="Moe-$(date '+%Y%m%d-%H%M').zip"
 TC_DIR="$HOME/tc/clang-r450784d"
 GCC_64_DIR="$HOME/tc/aarch64-linux-android-4.9"
 GCC_32_DIR="$HOME/tc/arm-linux-androideabi-4.9"
