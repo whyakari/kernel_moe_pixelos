@@ -96,9 +96,7 @@ if [ -f "out/arch/arm64/boot/Image.gz-dtb" ] && \
     cd ..
     rm -rf AnyKernel3
     rm -rf out/arch/arm64/boot
-    curl --upload-file $ZIPNAME https://temp.sh/$ZIPNAME; echo
     echo -e "\nCompleted in $((SECONDS / 60)) minute(s) and $((SECONDS % 60)) second(s) !"
-    echo "Zip: $ZIPNAME"
 else
     echo -e "\nCompilation failed!"
     exit 1
