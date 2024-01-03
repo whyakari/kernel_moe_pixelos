@@ -5,7 +5,7 @@ CONFIG_LOCAL_VERSION_AUTO=n
 CONFIG_LOCALVERSION_AUTO=n
 
 # KernelSU
-CONFIG_KSU=n
+# CONFIG_KSU is not set 
 
 ## Docker
 # Generally Necessary
