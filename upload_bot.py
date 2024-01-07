@@ -5,18 +5,21 @@ import os
 import sys
 import argparse
 from pyrogram import filters
+from dotenv import load_dotenv
 from pyrogram.client import Client
 from pyrogram.enums import ParseMode
 from pyrogram.types import Message
+
+load_dotenv()
 
 elapsed_minutes = 0
 elapsed_seconds = 0
 elapsed_minutes_formatted = ""
 
-chat_id = os.environ.get('CHAT_ID', 0)
-api_id = os.environ.get('API_ID', 0)
-api_hash = os.environ.get('API_HASH', '')
-bot_token = os.environ.get('BOT_TOKEN', '')
+chat_id = int(os.getenv('CHAT_ID', 0))
+api_id = int(os.getenv('API_ID', 0))
+api_hash = os.getenv('API_HASH', '')
+bot_token = os.getenv('BOT_TOKEN', '')
 
 app = Client(
     name="cache",
