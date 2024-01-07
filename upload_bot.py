@@ -67,7 +67,7 @@ async def send_message_compiled(bot: Client, msg: Message):
         shell=True
     )
     return_code = subprocess.call(
-        "./moe.sh", 
+        "./build.sh", 
         shell=True
     )
 
