@@ -4,11 +4,7 @@
 #   By Akari Nyan - © 2023
 # ----------------------------- 
 
-# Sets the default option
 tag="stable"
-
-# Sets the default option
-# to remove the KPROBES warning
 remove_kprobes_warning="y"
 
 while getopts "t:k:h" opt; do
@@ -50,9 +46,6 @@ fi
 
 curl -LSs "https://raw.githubusercontent.com/whyakari/KernelSU/main/kernel/setup.sh" | $cmd
 
-# Remove KPROBES dependency warning 
-# if option is set to "y"
-# Default: y (yes)
 if [ "$remove_kprobes_warning" = "y" ]; then
   sed -i '59,60d' KernelSU/kernel/ksu.c
 fi
