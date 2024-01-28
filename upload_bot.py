@@ -10,6 +10,8 @@ from pyrogram.client import Client
 from pyrogram.enums import ParseMode
 from pyrogram.types import Message
 
+# load environment variables - 
+# from secrets keys GitHub
 load_dotenv()
 
 elapsed_minutes = 0
@@ -40,7 +42,8 @@ commit_hash = commit_head.split(" - ")[0]
 
 kernel_version = subprocess.check_output(
     "make kernelversion 2>/dev/null", 
-    shell=True).decode().strip()
+    shell=True
+).decode().strip()
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -52,17 +55,16 @@ parser.add_argument(
 
 args = parser.parse_args()
 build_type = args.build_type
-
 tag = f"ginkgo_{commit_hash[:7]}_{time.strftime('%Y%m%d')}"
 
 @app.on_message(filters.command("compile") & filters.user(chat_id))
-async def send_message_compiled(bot: Client, msg: Message):
+async def message_compile(bot: Client, msg: Message):
     global elapsed_minutes, elapsed_seconds, elapsed_minutes_formatted
  
     start_time = time.perf_counter()
     start_message = await bot.send_message(
         chat_id, 
-        "Compilation started, please wait."
+        "Compilation started... please wait."
     )
 
     return_code = subprocess.call(
@@ -94,9 +96,8 @@ async def send_message_compiled(bot: Client, msg: Message):
         )
 
         completion_message = f"\nCompleted in {elapsed_minutes_formatted} minute(s) and {elapsed_seconds} second(s) !"
-
         completed_compile_text = f"**Compilation completed!**\n\nCommit: {commit_link}\n{completion_message}"
-
+        
         await start_message.edit_text(text=completed_compile_text)
 
         zip_files = glob.glob("*.zip")
